@@ -225,7 +225,7 @@ namespace Bowling.Data
     {
         public override ImmutableCredentials GetCredentials()
         {
-            return new ImmutableCredentials("AKIASXXT5FT3R7RF7BY4", "mD34CYF+Xac/fgvHhSudKyaMgfO86WDYVzTnaWq+", null);
+            return new ImmutableCredentials("", "", null);
         }
     }
 }
