@@ -2,6 +2,8 @@
 {
     public class Shot
     {
-        public int PinsKnocked { get; set; }
+        public int PinsKnockedDown { get; set; }
+        public object Id { get; set; }
+        public object GameId { get; set; }
     }
 }

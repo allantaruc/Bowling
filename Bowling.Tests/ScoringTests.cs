@@ -18,11 +18,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot
+                                PinsKnockedDown = firstShot
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot
+                                PinsKnockedDown = secondShot
                             }
                         }
                     },
@@ -30,11 +30,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             },
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             }
                         }
                     }
@@ -43,11 +43,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             },
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             }
                         }
                     }
@@ -56,11 +56,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             },
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             }
                         }
                     }
@@ -69,11 +69,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             },
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             }
                         }
                     }
@@ -82,11 +82,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             },
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             }
                         }
                     }
@@ -95,11 +95,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             },
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             }
                         }
                     }
@@ -108,11 +108,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             },
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             }
                         }
                     }
@@ -121,11 +121,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             },
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             }
                         }
                     }
@@ -134,15 +134,15 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             },
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             },
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             }
                         }
                     }
@@ -189,11 +189,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot1
+                                PinsKnockedDown = firstShot1
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot1
+                                PinsKnockedDown = secondShot1
                             }
                         }
                     },
@@ -201,11 +201,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot2
+                                PinsKnockedDown = firstShot2
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot2
+                                PinsKnockedDown = secondShot2
                             }
                         }
                     },
@@ -213,11 +213,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot3
+                                PinsKnockedDown = firstShot3
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot3
+                                PinsKnockedDown = secondShot3
                             }
                         }
                     },
@@ -225,11 +225,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot4
+                                PinsKnockedDown = firstShot4
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot4
+                                PinsKnockedDown = secondShot4
                             }
                         }
                     },
@@ -237,11 +237,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot5
+                                PinsKnockedDown = firstShot5
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot5
+                                PinsKnockedDown = secondShot5
                             }
                         }
                     },
@@ -249,11 +249,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot6
+                                PinsKnockedDown = firstShot6
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot6
+                                PinsKnockedDown = secondShot6
                             }
                         }
                     },
@@ -261,11 +261,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot7
+                                PinsKnockedDown = firstShot7
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot7
+                                PinsKnockedDown = secondShot7
                             }
                         }
                     },
@@ -273,11 +273,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot8
+                                PinsKnockedDown = firstShot8
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot8
+                                PinsKnockedDown = secondShot8
                             }
                         }
                     },
@@ -285,11 +285,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot9
+                                PinsKnockedDown = firstShot9
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot9
+                                PinsKnockedDown = secondShot9
                             }
                         }
                     },
@@ -297,14 +297,14 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot10
+                                PinsKnockedDown = firstShot10
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot10
+                                PinsKnockedDown = secondShot10
                             },
                             new Shot {
-                                PinsKnocked = thirdShot10
+                                PinsKnockedDown = thirdShot10
                             }
                         }
                     }
@@ -350,11 +350,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot1
+                                PinsKnockedDown = firstShot1
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot1
+                                PinsKnockedDown = secondShot1
                             }
                         }
                     },
@@ -362,11 +362,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot2
+                                PinsKnockedDown = firstShot2
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot2
+                                PinsKnockedDown = secondShot2
                             }
                         }
                     },
@@ -374,11 +374,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot3
+                                PinsKnockedDown = firstShot3
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot3
+                                PinsKnockedDown = secondShot3
                             }
                         }
                     },
@@ -386,11 +386,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot4
+                                PinsKnockedDown = firstShot4
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot4
+                                PinsKnockedDown = secondShot4
                             }
                         }
                     },
@@ -398,11 +398,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot5
+                                PinsKnockedDown = firstShot5
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot5
+                                PinsKnockedDown = secondShot5
                             }
                         }
                     },
@@ -410,11 +410,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot6
+                                PinsKnockedDown = firstShot6
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot6
+                                PinsKnockedDown = secondShot6
                             }
                         }
                     },
@@ -422,11 +422,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot7
+                                PinsKnockedDown = firstShot7
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot7
+                                PinsKnockedDown = secondShot7
                             }
                         }
                     },
@@ -434,11 +434,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot8
+                                PinsKnockedDown = firstShot8
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot8
+                                PinsKnockedDown = secondShot8
                             }
                         }
                     },
@@ -446,11 +446,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot9
+                                PinsKnockedDown = firstShot9
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot9
+                                PinsKnockedDown = secondShot9
                             }
                         }
                     },
@@ -458,14 +458,14 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot10
+                                PinsKnockedDown = firstShot10
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot10
+                                PinsKnockedDown = secondShot10
                             },
                             new Shot {
-                                PinsKnocked = thirdShot10
+                                PinsKnockedDown = thirdShot10
                             }
                         }
                     }
@@ -508,11 +508,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot1
+                                PinsKnockedDown = firstShot1
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot1
+                                PinsKnockedDown = secondShot1
                             }
                         }
                     },
@@ -520,11 +520,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot2
+                                PinsKnockedDown = firstShot2
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot2
+                                PinsKnockedDown = secondShot2
                             }
                         }
                     },
@@ -532,11 +532,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot3
+                                PinsKnockedDown = firstShot3
                             },
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             }
                         }
                     },
@@ -544,11 +544,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot4
+                                PinsKnockedDown = firstShot4
                             },
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             }
                         }
                     },
@@ -556,11 +556,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot5
+                                PinsKnockedDown = firstShot5
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot5
+                                PinsKnockedDown = secondShot5
                             }
                         }
                     },
@@ -568,11 +568,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot6
+                                PinsKnockedDown = firstShot6
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot6
+                                PinsKnockedDown = secondShot6
                             }
                         }
                     },
@@ -580,11 +580,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot7
+                                PinsKnockedDown = firstShot7
                             },
                             new Shot
                             {
-                                PinsKnocked = 0
+                                PinsKnockedDown = 0
                             }
                         }
                     },
@@ -592,11 +592,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot8
+                                PinsKnockedDown = firstShot8
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot8
+                                PinsKnockedDown = secondShot8
                             }
                         }
                     },
@@ -604,11 +604,11 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot9
+                                PinsKnockedDown = firstShot9
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot9
+                                PinsKnockedDown = secondShot9
                             }
                         }
                     },
@@ -616,14 +616,14 @@ namespace Bowling.Tests
                         Shots = new List<Shot> {
                             new Shot
                             {
-                                PinsKnocked = firstShot10
+                                PinsKnockedDown = firstShot10
                             },
                             new Shot
                             {
-                                PinsKnocked = secondShot10
+                                PinsKnockedDown = secondShot10
                             },
                             new Shot {
-                                PinsKnocked = thirdShot10
+                                PinsKnockedDown = thirdShot10
                             }
                         }
                     }
