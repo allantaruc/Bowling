@@ -1,10 +1,10 @@
 ﻿using Amazon;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
-using Amazon.Runtime;
 using Bowling.Domain;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -155,19 +155,7 @@ namespace Bowling.Data
 
         public async Task<List<Shot>> GetAllShotsAsync(int gameId)
         {
-            var request = new QueryRequest
-            {
-                TableName = "shots",
-                QueryFilter = new Dictionary<string, Condition> {
-                    { "gameId", new Condition {  } }
-                }
-            };
-            //_dynamoDB.QueryAsync
-            var result = await _dynamoDB.ScanAsync(new ScanRequest
-            {
-                TableName = "shots",
-
-            });
+            var result = await _dynamoDB.ScanAsync(new ScanRequest() {TableName = "shots"});
 
             if (result != null && result.Items != null)
             {
@@ -178,12 +166,16 @@ namespace Bowling.Data
                     item.TryGetValue("gameId", out var GameId);
                     item.TryGetValue("pins_knocked_down", out var pinsKnockedDown);
 
-                    shots.Add(new Shot
+                    if(int.Parse(GameId?.N) == gameId)
                     {
-                        Id = int.Parse(id?.N),
-                        GameId = int.Parse(GameId?.N),
-                        PinsKnockedDown = int.Parse(pinsKnockedDown?.N)
-                    });
+                        shots.Add(new Shot
+                        {
+                            Id = int.Parse(id?.N),
+                            GameId = int.Parse(GameId?.N),
+                            PinsKnockedDown = int.Parse(pinsKnockedDown?.N)
+                        });
+                    }
+                    
                 }
                 return shots;
             }
@@ -191,23 +183,31 @@ namespace Bowling.Data
             return null;
         }
 
-        public async Task<Game> GetShotAsync(int id)
+        public async Task<Shot> GetShotAsync(int gameId, int id)
         {
-            var request = new GetItemRequest("games", new Dictionary<string, AttributeValue>() { { "id", new AttributeValue { N = $"{id}" } } });
-            var result = await _dynamoDB.GetItemAsync(request);
+            var result = await _dynamoDB.ScanAsync(new ScanRequest() { TableName = "shots" });
 
-            if (result != null && result.Item != null && result.Item.Count != 0)
+            if (result != null && result.Items != null)
             {
-                result.Item.TryGetValue("id", out var gameid);
-                result.Item.TryGetValue("name", out var name);
-
-                return new Game
+                var shots = new List<Shot>();
+                foreach (var item in result.Items)
                 {
-                    Id = int.Parse(gameid?.N),
-                    Name = name?.S
-                };
+                    item.TryGetValue("id", out var resultId);
+                    item.TryGetValue("gameId", out var resultGameId);
+                    item.TryGetValue("pins_knocked_down", out var pinsKnockedDown);
 
+                    if (int.Parse(resultGameId?.N) == gameId && int.Parse(resultId?.N) == id)
+                    {
+                        return new Shot
+                        {
+                            Id = int.Parse(resultId?.N),
+                            GameId = int.Parse(resultGameId?.N),
+                            PinsKnockedDown = int.Parse(pinsKnockedDown?.N)
+                        };
+                    }
+                }
             }
+
             return null;
         }
         private static AmazonDynamoDBClient CreateClient()
@@ -218,14 +218,6 @@ namespace Bowling.Data
             };
             var awsCredentials = new AwsCredentials();
             return new AmazonDynamoDBClient(awsCredentials, dynamoDbConfig);
-        }
-    }
-
-    public class AwsCredentials : AWSCredentials
-    {
-        public override ImmutableCredentials GetCredentials()
-        {
-            return new ImmutableCredentials("", "", null);
         }
     }
 }
