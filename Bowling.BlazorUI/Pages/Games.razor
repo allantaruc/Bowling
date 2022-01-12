@@ -1,0 +1,53 @@
+﻿
+
+@page "/"
+@inject Bowling.BlazorUI.Data.IBowlingService bowlingService;
+
+<h3>Games</h3>
+@if (games == null) { 
+    <p>Loading..</p>
+}
+else
+{
+    <a class="btn btn-success" href="/game/0">Add New Game</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var game in games)
+            {
+                <tr>
+                    <td>@game.Id</td>
+                    <td>@game.Name</td>
+                    <td>
+                        <a class="btn btn-info" href="game/@game.Id">Edit</a>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" @onclick="@(e => OnDelete(game.Id))">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    private List<Data.Game> games;
+
+    protected override async Task OnInitializedAsync()
+    {
+        games = await bowlingService.GetGames();
+    }
+
+    private void OnDelete(int id)
+    {
+        bowlingService.DeleteGame(id);
+    }
+}

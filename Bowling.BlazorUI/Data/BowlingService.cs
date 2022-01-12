@@ -6,15 +6,18 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System;
 
-namespace Bowling.UI.Data
+namespace Bowling.BlazorUI.Data
 {
     public class BowlingService : IBowlingService
     {
         private readonly HttpClient _client;
 
-        public BowlingService(HttpClient httpClient)
+        public BowlingService()
         {
-            _client = httpClient;
+            _client = new HttpClient {
+                //BaseAddress = new Uri("http://localhost:5001/")
+                BaseAddress = new Uri("http://bowlingapi-dev.us-east-2.elasticbeanstalk.com/")
+            };
         }
 
         List<Game> _games = new List<Game> {
