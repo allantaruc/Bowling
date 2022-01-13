@@ -29,7 +29,7 @@ else
                         <a class="btn btn-info" href="game/@game.Id">Edit</a>
                     </td>
                     <td>
-                        <button class="btn btn-danger" @onclick="@(e => OnDelete(game.Id))">Delete</button>
+                        <button class="btn btn-danger" @onclick="@(e => OnDeleteAsync(game.Id))">Delete</button>
                     </td>
                 </tr>
             }
@@ -46,8 +46,9 @@ else
         games = await bowlingService.GetGames();
     }
 
-    private void OnDelete(int id)
+    private async Task OnDeleteAsync(int id)
     {
         bowlingService.DeleteGame(id);
+        games = await bowlingService.GetGames();
     }
 }

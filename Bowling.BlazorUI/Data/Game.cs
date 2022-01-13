@@ -13,19 +13,27 @@ namespace Bowling.BlazorUI.Data
 
         public List<Frame> Frames { get; set; }
 
+        [Range(0, 10, ErrorMessage = "Pins knocked down per shot can only be 0-10")]
+        public string Shot1 { get; set; }
+        [Range(0, 10, ErrorMessage = "Pins knocked down per shot can only be 0-10")]
+        public string Shot2 { get; set; }
+        
+        [Range(0, 10, ErrorMessage = "Pins knocked down per shot can only be 0-10")]
+        public string Shot3 { get; set; }
+
         public Game()
         {
             Id = 0;
-            Frames = new List<Frame>(10);
-            for (int frameCount = 0; frameCount != 9; frameCount++) Frames.Add(new Frame {
-                Id = frameCount + 1,
-                Shots = { new Shot(), new Shot () }
-            }); ;
-            Frames.Add(new Frame(true)
-            {
-                Id = 10,
-                Shots = { new Shot(), new Shot(), new Shot() }
-            });
+            //Frames = new List<Frame>(10);
+            //for (int frameCount = 0; frameCount != 9; frameCount++) Frames.Add(new Frame {
+            //    Id = frameCount + 1,
+            //    Shots = { new Shot(), new Shot () }
+            //}); ;
+            //Frames.Add(new Frame(true)
+            //{
+            //    Id = 10,
+            //    Shots = { new Shot(), new Shot(), new Shot() }
+            //});
         }
     }
 
@@ -48,7 +56,7 @@ namespace Bowling.BlazorUI.Data
     public class Shot {
         private string _pins;
         
-        [Range(0, 10, ErrorMessage = "Pins knocked down per frame can only be 0-10")]
+        [Range(0, 10, ErrorMessage = "Pins knocked down per shot can only be 0-10")]
         public string PinsKnockedDown
         {
             get {

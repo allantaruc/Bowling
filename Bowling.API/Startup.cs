@@ -27,8 +27,8 @@ namespace Bowling.Web
             services.AddCors(option => {
                 option.AddPolicy("CorsPolicy", policy => {
                     policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:5000", 
-                        "http://bowling-ui.s3-website.us-east-2.amazonaws.com", 
-                        "https://dycza8n4d80g6.cloudfront.net");
+                        "http://bowling-ui.s3-website.us-east-2.amazonaws.com",
+                        "https://d32uq6okpm9da.cloudfront.net/");
                 });
             });
             

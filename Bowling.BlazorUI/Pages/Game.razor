@@ -7,36 +7,85 @@
 <EditForm Model="@_game">
     <DataAnnotationsValidator />
     <ValidationSummary />
-    <div class="form-group">
-        <label>Id</label>
-        <input id="id" class="form-control" name="id" value="@_game.Id" readonly />
-    </div>
+    @*<div class="form-group">
+            <label>Id</label>
+            <input id="id" class="form-control" name="id" value="@_game.Id" readonly />
+        </div>*@
     <div class="form-group">
         <label>Name</label>
         <InputText id="name" class="form-control" @bind-Value="_game.Name" placeholder="game name" />
     </div>
-    @foreach (var frame in _game.Frames)
+    @if (!ShowAdd)
+    {
+        @if (ShowAddFrame)
+        {
+            <div class="form-group">
+                <button class="btn btn-primary" @onclick="@(e => ShowAdd = true)">Add Frame</button>
+            </div>
+        }
+    }
+    @if (ShowAdd)
     {
         <div class="form-group">
-            <label>Frame @frame.Id.ToString()</label>
-            @foreach (var shot in frame.Shots)
-            {
-                <InputText id="pinsKnocked" class="form-control" @bind-Value="shot.PinsKnockedDown" placeholder="pins knocked down" />
-            }
+            <InputText id="pinsKnocked1" class="form-control" @bind-Value="_game.Shot1" placeholder="pins knocked down" />
+            <InputText id="pinsKnocked2" class="form-control" @bind-Value="_game.Shot2" placeholder="pins knocked down" />
+            @if (IsTenth)
+            {<InputText id="pinsKnocked3" class="form-control" @bind-Value="_game.Shot3" placeholder="pins knocked down" />}
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" @onclick="@(e => AddFrame())">Add</button>
+        </div>
+        @if (!string.IsNullOrEmpty(Message))
+        {
+            <div class="form-group">
+                <ul class="validation-errors">
+                    <li class="validation-message">@Message</li>
+                </ul>
+            </div>
+        }
+    }
+    @if (_game.Frames != null && _game.Frames.Count > 0)
+    {
+        <div class="form-group">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td>Shot 1</td>
+                        <td>Shot 2</td>
+                        <td>Shot 3</td>
+                    </tr>
+                </thead>
+                @foreach (var frame in _game.Frames)
+                {
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label>Frame @frame.Id.ToString()</label>
+                            </td>
+                            @foreach (var shot in frame.Shots)
+                            {
+                                <td><label>@shot.PinsKnockedDown</label></td>
+                            }
+                        </tr>
+                    </tbody>
+                }
+            </table>
         </div>
     }
 
-    @*<button type="submit" class="btn btn-primary">Update</button>*@
-    @*<button class="btn btn-primary" @onclick="@(e => Submit(e)">Update</button>*@
-    <button class="btn btn-primary" @onclick="@(e => Submit(e))">Save</button>
-    <button class="btn btn-danger" @onclick="@(e => Clear())">Clear</button>
-    <br />
-    @if (!string.IsNullOrEmpty(Message))
+
+    @if (!string.IsNullOrEmpty(Score))
     {
-        <ul class="validation-errors">
-            <li class="validation-message">@Message</li>
-        </ul>
+        <div class="form-group">@Score</div>
     }
+<div class="form-group">
+    <button class="btn btn-info" @onclick="@(e => Navigation.NavigateTo("/"))">Back</button>
+    <button class="btn btn-primary" @onclick="@(e => Calculate())">Calculate</button>
+    <button class="btn btn-primary" @onclick="@(e => Submit())">Save</button>
+    <button class="btn btn-danger " @onclick="@(e => Clear())">Clear</button>
+</div>
+
 </EditForm>
 
 @code {
@@ -46,6 +95,9 @@
     private Data.Game _game { get; set; }
 
     private string Message { get; set; }
+    private string Score { get; set; }
+
+    private bool ShowAdd { get; set; }
 
     protected override void OnInitialized()
     {
@@ -54,24 +106,136 @@
 
     private void Clear()
     {
+        IsTenth = false;
+        ShowAdd = false;
         Message = string.Empty;
+        Score = string.Empty;
         if (!string.IsNullOrEmpty(Id) && Id == "0") _game = new Data.Game();
         else _game = GameSerice.GetGame(int.Parse(Id));
     }
 
-    private void Submit(MouseEventArgs e)
-    {
-        Message = string.Empty;
+    private bool IsTenth { get; set; }
+    private bool ShowAddFrame {
 
-        if (!IsValid(_game.Frames)) {
+        get {
+            if (_game.Frames == null) _game.Frames = new List<Data.Frame>();
+            return _game.Frames.Count != 10;
+        }
+    }
+
+    private void AddFrame() {
+
+        //if (_game.Frames == null) _game.Frames = new List<Data.Frame>();
+        if (_game.Frames.Count < 9) {
+            var shots = new List<Data.Shot> {
+                new Data.Shot { PinsKnockedDown = _game.Shot1 },
+                new Data.Shot { PinsKnockedDown = _game.Shot2 }
+            };
+
+            bool isValid = false;
+
+            if (shots[0].Pins + shots[1].Pins > 10) isValid = false;
+            else isValid = true;
+
+            if (!isValid)
+            {
+                Message = "Invalid Frame, please check and try again.";
+                return;
+            }
+
+
+            _game.Frames.Add(new Data.Frame
+            {
+                Id = _game.Frames.Count + 1,
+                Shots = {
+                new Data.Shot { PinsKnockedDown = _game.Shot1  },
+                new Data.Shot { PinsKnockedDown = _game.Shot2 }
+            }
+            });
+        }
+        else
+        {
+            var shots = new List<Data.Shot> {
+                new Data.Shot { PinsKnockedDown = _game.Shot1 },
+                new Data.Shot { PinsKnockedDown = _game.Shot2 },
+                new Data.Shot { PinsKnockedDown = _game.Shot3 }
+            };
+            bool isValid = false;
+
+            if(shots[0].Pins != 10 && (shots[0].Pins + shots[1].Pins) != 10) {
+                if (shots[2].Pins != 0) isValid = false;
+            }
+            else
+            {
+                if ((shots[0].Pins + shots[1].Pins + shots[2].Pins) > 30)
+                {
+                    isValid = false;
+                }
+                else isValid = true;
+            }
+
+            if (!isValid)
+            {
+                Message = "Invalid Frame, please check and try again.";
+                return;
+            }
+
+
+            _game.Frames.Add(new Data.Frame
+            {
+                Id = _game.Frames.Count + 1,
+                Shots = {
+                new Data.Shot { PinsKnockedDown = _game.Shot1  },
+                new Data.Shot { PinsKnockedDown = _game.Shot2 },
+                new Data.Shot { PinsKnockedDown = _game.Shot3 }
+            }
+            });
+
+        }
+
+
+        if (_game.Frames.Count == 9) IsTenth = true;
+
+        ShowAdd = false;
+    }
+    
+    private void Calculate() {
+        Message = string.Empty;
+        Score = string.Empty;
+
+        if (!IsValid(_game.Frames))
+        {
             Message = "Invalid Frames, please check and try again.";
             return;
         }
 
 
+        var game = new Domain.Game
+        {
+            Frames = new List<Domain.Frame>()
+        };
+        foreach (var frame in _game.Frames)
+        {
+            var newFrame = new Domain.Frame();
+            newFrame.Shots = new List<Domain.Shot>();
+            foreach (var shot in frame.Shots)
+            {
+                newFrame.Shots.Add(new Domain.Shot
+                {
+                    PinsKnockedDown = shot.Pins
+                });
+            }
+            game.Frames.Add(newFrame);
+        }
+        int score = game.CalculateScore();
+
+        Score = $"Total score: {score}";
+
+    }
+    private void Submit()
+    {
         if (_game.Id == 0) GameSerice.AddGame(_game);
         else GameSerice.UpdateGame(_game);
-
 
         Navigation.NavigateTo("/");
     }

@@ -13,6 +13,13 @@ namespace Bowling.Domain
 
         public int CalculateScore()
         {
+            while (Frames.Count != 10) {
+                Frames.Add(new Frame
+                {
+                    Shots = new List<Shot> 
+                        { new Shot { PinsKnockedDown = 0 }, new Shot { PinsKnockedDown = 0 }, new Shot { PinsKnockedDown =0 } }
+                }); ;
+            }
             Score = 0;
             for (var iFrame= 0; iFrame != 10; iFrame++) {
                 var currentFrame = Frames[iFrame];

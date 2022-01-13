@@ -15,9 +15,8 @@ namespace Bowling.BlazorUI.Data
         public BowlingService()
         {
             _client = new HttpClient {
-                BaseAddress = new Uri("http://localhost:5001/")
-                //BaseAddress = new Uri("http://bowlingapi-dev.us-east-2.elasticbeanstalk.com/")
-                //BaseAddress = new Uri("https://d35o592sg48ha3.cloudfront.net/")
+                //BaseAddress = new Uri("http://localhost:5001/")
+                BaseAddress = new Uri("http://bowlingapi-dev.us-east-2.elasticbeanstalk.com")
             };
         }
 
@@ -29,15 +28,24 @@ namespace Bowling.BlazorUI.Data
 
         public void AddGame(Game game)
         {
-            _games.OrderBy(game => game.Id);
-            game.Id = _games.LastOrDefault().Id + 1;
-            _games.Add(game);
+            //var games = GetGames().Result;
+            game.Id = _games.Count + 1;
+            
+            var result = _client.PostAsJsonAsync("api/bowling", new Domain.Game
+            {
+                Id = game.Id,
+                Name = game.Name
+            });
+
+            //result.Result.Content
+
         }
 
         public void DeleteGame(int id)
         {
             var game = GetGame(id);
             _games.Remove(game);
+            _client.DeleteAsync($"api/bowling/{id}");
         }
 
         public Game GetGame(int Id)
@@ -58,8 +66,8 @@ namespace Bowling.BlazorUI.Data
                     Name = game.Name
                 });
             }
-            
-            
+
+            _games = games;
             
             return games;
         }
