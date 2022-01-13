@@ -15,8 +15,9 @@ namespace Bowling.BlazorUI.Data
         public BowlingService()
         {
             _client = new HttpClient {
-                //BaseAddress = new Uri("http://localhost:5001/")
-                BaseAddress = new Uri("http://bowlingapi-dev.us-east-2.elasticbeanstalk.com/")
+                BaseAddress = new Uri("http://localhost:5001/")
+                //BaseAddress = new Uri("http://bowlingapi-dev.us-east-2.elasticbeanstalk.com/")
+                //BaseAddress = new Uri("https://d35o592sg48ha3.cloudfront.net/")
             };
         }
 
